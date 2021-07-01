@@ -37,6 +37,12 @@ extern "C" {
 
 /* Exported types ------------------------------------------------------------*/
 /* USER CODE BEGIN ET */
+typedef struct
+{
+	uint8_t Received[30];
+	uint8_t Transmit[30];
+
+} DMA_UART_STRUCT;
 
 /* USER CODE END ET */
 
@@ -49,8 +55,6 @@ extern "C" {
 /* USER CODE BEGIN EM */
 
 /* USER CODE END EM */
-
-void HAL_TIM_MspPostInit(TIM_HandleTypeDef *htim);
 
 /* Exported functions prototypes ---------------------------------------------*/
 void Error_Handler(void);
@@ -74,6 +78,14 @@ void Error_Handler(void);
 #define LED_VD7_GPIO_Port GPIOE
 /* USER CODE BEGIN Private defines */
 
+
+#define LoWord(param) ((unsigned *)&param)[0]
+#define HiWord(param) ((unsigned *)&param)[1]
+
+#define Lowest(param) ((uint8_t *)&param)[0]
+#define Lo(param) 	  ((uint8_t *)&param)[1]
+#define Hi(param) 	  ((uint8_t *)&param)[2]
+#define Highest(param)((uint8_t *)&param)[3]
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus
